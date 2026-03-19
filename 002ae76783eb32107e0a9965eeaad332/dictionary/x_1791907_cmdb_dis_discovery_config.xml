@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="98fc27eb83eb32107e0a9965eeaad339" label="CMDB Discovery Configuration" max_length="40" name="x_1791907_cmdb_dis_discovery_config" type="collection">
+        <element attributes="edge_encryption_enabled=true" display="true" label="Configuration Name" mandatory="true" max_length="100" name="name" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Source Table" mandatory="true" max_length="80" name="source_table" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Next Scheduled Run" max_length="40" name="next_run" type="glide_date_time"/>
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element attributes="encode_utf8=false" default="javascript:gs.getUserID()" label="Created By" max_length="32" name="created_by" reference="sys_user" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Target CMDB Table" mandatory="true" max_length="80" name="target_table" type="string"/>
+        <element default="0" label="Records Discovered" max_length="40" name="records_discovered" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Discovery Method" max_length="40" name="discovery_method" type="string">
+            <choice>
+                <element inactive_on_update="false" label="File Import" sequence="2" value="file"/>
+                <element inactive_on_update="false" label="Custom Script" sequence="3" value="script"/>
+                <element inactive_on_update="false" label="API Based" sequence="0" value="api"/>
+                <element inactive_on_update="false" label="Database Query" sequence="1" value="database"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="Discovery Script" max_length="4000" name="discovery_script" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Description" max_length="255" name="description" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Last Discovery Run" max_length="40" name="last_run" type="glide_date_time"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Discovery Frequency" max_length="40" name="discovery_frequency" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Weekly" sequence="3" value="weekly"/>
+                <element inactive_on_update="false" label="Real-time" sequence="0" value="realtime"/>
+                <element inactive_on_update="false" label="Monthly" sequence="4" value="monthly"/>
+                <element inactive_on_update="false" label="Hourly" sequence="1" value="hourly"/>
+                <element inactive_on_update="false" label="Manual Only" sequence="5" value="manual"/>
+                <element inactive_on_update="false" label="Daily" sequence="2" value="daily"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="Filter Conditions" max_length="1000" name="filter_conditions" type="string"/>
+        <index name="index">
+            <element name="created_by"/>
+        </index>
+    </element>
+</database>

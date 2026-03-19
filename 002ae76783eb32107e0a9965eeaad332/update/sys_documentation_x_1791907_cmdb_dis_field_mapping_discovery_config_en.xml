@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="discovery_config" label="Discovery Configuration" language="en" table="x_1791907_cmdb_dis_field_mapping">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>discovery_config</element>
+            <help/>
+            <hint/>
+            <label>Discovery Configuration</label>
+            <language>en</language>
+            <name>x_1791907_cmdb_dis_field_mapping</name>
+            <plural>Discovery Configurations</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-17 06:54:52</sys_created_on>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Discovery Configuration</sys_name>
+            <sys_package display_value="Cmdb Discove" source="x_1791907_cmdb_dis">002ae76783eb32107e0a9965eeaad332</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Cmdb Discove">002ae76783eb32107e0a9965eeaad332</sys_scope>
+            <sys_update_name>sys_documentation_x_1791907_cmdb_dis_field_mapping_discovery_config_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-17 06:54:52</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>
