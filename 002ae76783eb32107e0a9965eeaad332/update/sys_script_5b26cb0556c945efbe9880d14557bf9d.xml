@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_1791907_cmdb_dis_discovery_config</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Schedule Next Discovery Run</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[import { gs, GlideDateTime } from '@servicenow/glide';
+
+export function scheduleNextDiscovery(current, previous) {
+    // Only schedule if configuration is active and has a frequency set
+    if (!current.getValue('active') || current.getValue('active') != 'true') {
+        return;
+    }
+    
+    var frequency = current.getValue('discovery_frequency');
+    if (!frequency || frequency == 'manual') {
+        // Clear next_run if manual
+        current.setValue('next_run', '');
+        return;
+    }
+    
+    var nextRun = new GlideDateTime();
+    
+    switch (frequency) {
+        case 'realtime':
+            nextRun.addSeconds(300); // 5 minutes for realtime
+            break;
+        case 'hourly':
+            nextRun.addSeconds(3600); // 1 hour
+            break;
+        case 'daily':
+            nextRun.addDaysLocalTime(1); // 1 day
+            break;
+        case 'weekly':
+            nextRun.addDaysLocalTime(7); // 1 week
+            break;
+        case 'monthly':
+            nextRun.addMonthsLocalTime(1); // 1 month
+            break;
+        default:
+            // Default to daily for unknown frequencies
+            nextRun.addDaysLocalTime(1);
+            break;
+    }
+    
+    current.setValue('next_run', nextRun.getDisplayValue());
+    
+    gs.info('CMDB Discovery: Scheduled next run for configuration "' + current.getValue('name') + '" at ' + nextRun.getDisplayValue());
+}]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-17 06:58:32</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>5b26cb0556c945efbe9880d14557bf9d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Schedule Next Discovery Run</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Cmdb Discove" source="x_1791907_cmdb_dis">002ae76783eb32107e0a9965eeaad332</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Cmdb Discove">002ae76783eb32107e0a9965eeaad332</sys_scope>
+        <sys_update_name>sys_script_5b26cb0556c945efbe9880d14557bf9d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-17 06:58:32</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=5b26cb0556c945efbe9880d14557bf9d"/>
+</record_update>
