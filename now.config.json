@@ -1,0 +1,10 @@
+{
+    "scope": "x_1791907_cmdb_dis",
+    "scopeId": "002ae76783eb32107e0a9965eeaad332",
+    "name": "Cmdb Discove",
+    "tsconfigPath": "./src/server/tsconfig.json",
+    "licensing": {
+        "enforceLicense": "none"
+    },
+    "description": "[BUILD AGENT GENERATED]:  Custom CMDB discovery and mapping solution - crawls CMDB tables, provides configuration interface for custom ITOM discovery implementation"
+}
